@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="navbar" class="navbar">
+    <div class="nav-brand">
+        <span class="nav-icon">🎓</span>
+        <span>SMS | University of Ruhuna | ICT3122</span>
+    </div>
+    <ul class="nav-links">
+        <li><a th:href="@{/}" class="nav-link">🏠 Home</a></li>
+        <li><a th:href="@{/student}" class="nav-link">👤 Students</a></li>
+        <li><a th:href="@{/marks}" class="nav-link">📊 Marks</a></li>
+        <li><a th:href="@{/logout}" class="nav-link nav-exit">🚪 Exit</a></li>
+    </ul>
+</nav>
+</body>
+</html>

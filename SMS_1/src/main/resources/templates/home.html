@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home | Marks Management System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container">
+    <div class="hero-card">
+        <div class="hero-icon">🎓</div>
+        <h1>Marks Management System</h1>
+        <p class="subtitle">University of Ruhuna | Faculty of Technology</p>
+        <p class="subtitle">Advanced Programming Practicum – ICT3122</p>
+
+        <div class="menu-grid">
+            <a th:href="@{/student}" class="menu-card">
+                <div class="menu-card-icon">👤</div>
+                <div class="menu-card-title">Student Operations</div>
+                <div class="menu-card-desc">Add, View, Update, Delete students</div>
+            </a>
+            <a th:href="@{/marks}" class="menu-card">
+                <div class="menu-card-icon">📊</div>
+                <div class="menu-card-title">Marks Operations</div>
+                <div class="menu-card-desc">Add &amp; display student marks</div>
+            </a>
+            <a th:href="@{/logout}" class="menu-card menu-card-exit">
+                <div class="menu-card-icon">🚪</div>
+                <div class="menu-card-title">Exit / Logout</div>
+                <div class="menu-card-desc">Close the application</div>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

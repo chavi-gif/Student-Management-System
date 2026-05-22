@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Student Marks | SMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container container-wide">
+    <div class="page-header">
+        <h2>📋 All Student Marks</h2>
+        <a th:href="@{/marks}" class="btn btn-secondary">← Back to Marks Operations</a>
+    </div>
+
+    <div th:if="${#lists.isEmpty(reports)}" class="alert alert-warning">
+        No marks records found in the system.
+    </div>
+
+    <div th:unless="${#lists.isEmpty(reports)}" class="table-card">
+        <table class="marks-table">
+            <thead>
+            <tr>
+                <th>RegNo</th>
+                <th>Name</th>
+                <th>Quiz 01</th>
+                <th>Quiz 02</th>
+                <th>Quiz 03</th>
+                <th>Mid</th>
+                <th>End</th>
+                <th>Total</th>
+                <th>Grade</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="r : ${reports}">
+                <td th:text="${r.regNo}"></td>
+                <td th:text="${r.name}"></td>
+                <td th:text="${r.quiz01}"></td>
+                <td th:text="${r.quiz02}"></td>
+                <td th:text="${r.quiz03}"></td>
+                <td th:text="${r.mid}"></td>
+                <td th:text="${r.end}"></td>
+                <td class="total-cell" th:text="${#numbers.formatDecimal(r.total, 1, 2)}"></td>
+                <td>
+                    <span th:text="${r.grade}"
+                          th:class="${r.grade == 'F' ? 'grade-badge grade-fail' : 'grade-badge grade-pass'}">
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="table-footer">
+            Total Records: <strong th:text="${#lists.size(reports)}"></strong> |
+            Formula: Total = 10% (Best 2 Quizzes) + 20% (Mid) + 70% (End)
+        </p>
+    </div>
+</div>
+</body>
+</html>

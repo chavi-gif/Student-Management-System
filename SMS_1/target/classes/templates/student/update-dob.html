@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update DoB | SMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container">
+    <div class="page-header">
+        <h2>📅 Update Date of Birth</h2>
+        <a th:href="@{/student/update}" class="btn btn-secondary">← Back</a>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+
+    <div class="form-card">
+        <p><strong>RegNo:</strong> <span th:text="${regNo}"></span></p>
+        <p><strong>Current DoB:</strong> <span th:text="${currentDob}"></span></p>
+
+        <form th:action="@{/student/update/dob}" method="post">
+            <input type="hidden" name="regNo" th:value="${regNo}">
+            <div class="form-group">
+                <label for="dob">New Date of Birth *</label>
+                <input type="date" id="dob" name="dob" class="form-control" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">💾 Update DoB</button>
+                <a th:href="@{/student}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

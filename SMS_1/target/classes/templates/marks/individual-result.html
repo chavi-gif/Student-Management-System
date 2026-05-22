@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Marks | SMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container container-wide">
+    <div class="page-header">
+        <h2>📊 Individual Student Marks</h2>
+        <a th:href="@{/marks/individual}" class="btn btn-secondary">← Search Again</a>
+    </div>
+
+    <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+
+    <div th:if="${report}" class="detail-card">
+        <h3>Marks Report</h3>
+        <div class="grade-header" th:classappend="${report.grade == 'F' ? 'grade-header-fail' : 'grade-header-pass'}">
+            <span class="grade-big" th:text="${report.grade}"></span>
+            <span class="total-big" th:text="'Total: ' + ${#numbers.formatDecimal(report.total, 1, 2)} + '%'"></span>
+        </div>
+        <table class="marks-table">
+            <thead>
+            <tr>
+                <th>RegNo</th>
+                <th>Name</th>
+                <th>Quiz 01</th>
+                <th>Quiz 02</th>
+                <th>Quiz 03</th>
+                <th>Mid</th>
+                <th>End</th>
+                <th>Total</th>
+                <th>Grade</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${report.regNo}"></td>
+                <td th:text="${report.name}"></td>
+                <td th:text="${report.quiz01}"></td>
+                <td th:text="${report.quiz02}"></td>
+                <td th:text="${report.quiz03}"></td>
+                <td th:text="${report.mid}"></td>
+                <td th:text="${report.end}"></td>
+                <td class="total-cell" th:text="${#numbers.formatDecimal(report.total, 1, 2)}"></td>
+                <td>
+                    <span th:text="${report.grade}"
+                          th:class="${report.grade == 'F' ? 'grade-badge grade-fail' : 'grade-badge grade-pass'}">
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <p class="table-footer">Formula: Total = 10% (Best 2 Quizzes) + 20% (Mid) + 70% (End)</p>
+    </div>
+</div>
+</body>
+</html>

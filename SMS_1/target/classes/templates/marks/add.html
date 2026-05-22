@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Marks | SMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container">
+    <div class="page-header">
+        <h2>➕ Add Marks</h2>
+        <a th:href="@{/marks}" class="btn btn-secondary">← Back to Marks Operations</a>
+    </div>
+
+    <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+
+    <div class="form-card">
+        <p class="form-hint">ℹ️ Marks are out of 100. Student must exist in the system.</p>
+
+        <form th:action="@{/marks/add}" method="post" th:object="${marks}">
+            <div class="form-group">
+                <label for="regNo">Registration Number *</label>
+                <input type="text" id="regNo" th:field="*{regNo}"
+                       class="form-control" placeholder="e.g. ICT/2021/001" required>
+            </div>
+
+            <div class="marks-grid">
+                <div class="form-group">
+                    <label for="quiz01">Quiz 01 (out of 100) *</label>
+                    <input type="number" id="quiz01" th:field="*{quiz01}"
+                           class="form-control" min="0" max="100" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="quiz02">Quiz 02 (out of 100) *</label>
+                    <input type="number" id="quiz02" th:field="*{quiz02}"
+                           class="form-control" min="0" max="100" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="quiz03">Quiz 03 (out of 100) *</label>
+                    <input type="number" id="quiz03" th:field="*{quiz03}"
+                           class="form-control" min="0" max="100" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="mid">Mid Semester Exam (out of 100) *</label>
+                    <input type="number" id="mid" th:field="*{mid}"
+                           class="form-control" min="0" max="100" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="end">End Semester Exam (out of 100) *</label>
+                    <input type="number" id="end" th:field="*{end}"
+                           class="form-control" min="0" max="100" step="0.01" required>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>Grading Formula:</strong>
+                Total = 10% (Best 2 Quizzes) + 20% (Mid) + 70% (End)
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">💾 Save Marks</button>
+                <a th:href="@{/marks}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

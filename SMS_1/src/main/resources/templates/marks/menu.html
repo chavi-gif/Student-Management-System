@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Marks Operations | SMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container">
+    <div class="page-header">
+        <h2>📊 Marks Operations</h2>
+    </div>
+
+    <div class="menu-grid">
+        <a th:href="@{/marks/add}" class="menu-card">
+            <div class="menu-card-icon">➕</div>
+            <div class="menu-card-title">1. Add Marks</div>
+            <div class="menu-card-desc">Enter marks for a student</div>
+        </a>
+        <a th:href="@{/marks/all}" class="menu-card">
+            <div class="menu-card-icon">📋</div>
+            <div class="menu-card-title">2. Display All Student Marks</div>
+            <div class="menu-card-desc">View all marks with grades</div>
+        </a>
+        <a th:href="@{/marks/individual}" class="menu-card">
+            <div class="menu-card-icon">🔍</div>
+            <div class="menu-card-title">3. Individual Student Marks</div>
+            <div class="menu-card-desc">View marks for one student</div>
+        </a>
+        <a th:href="@{/}" class="menu-card">
+            <div class="menu-card-icon">🏠</div>
+            <div class="menu-card-title">4. Home</div>
+            <div class="menu-card-desc">Return to main menu</div>
+        </a>
+        <a th:href="@{/logout}" class="menu-card menu-card-exit">
+            <div class="menu-card-icon">🚪</div>
+            <div class="menu-card-title">0. Exit / Logout</div>
+            <div class="menu-card-desc">Close the application</div>
+        </a>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Student | SMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container">
+    <div class="page-header">
+        <h2>🗑️ Delete a Student</h2>
+        <a th:href="@{/student}" class="btn btn-secondary">← Back</a>
+    </div>
+
+    <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+
+    <div class="form-card">
+        <div class="alert alert-warning">
+            ⚠️ <strong>Warning:</strong> Deleting a student will archive both student details
+            and associated marks. This action cannot be undone.
+        </div>
+
+        <form th:action="@{/student/delete}" method="post"
+              onsubmit="return confirm('Are you sure you want to delete this student? All associated marks will also be removed.');">
+            <div class="form-group">
+                <label for="regNo">Registration Number to Delete</label>
+                <input type="text" id="regNo" name="regNo"
+                       class="form-control" placeholder="e.g. ICT/2021/001" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-danger">🗑️ Delete Student</button>
+                <a th:href="@{/student}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

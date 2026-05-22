@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details | SMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container">
+    <div class="page-header">
+        <h2>🔍 Student Details</h2>
+        <a th:href="@{/student/view}" class="btn btn-secondary">← Search Again</a>
+    </div>
+
+    <div th:if="${error}" class="alert alert-error" th:text="${error}"></div>
+
+    <div th:if="${student}" class="detail-card">
+        <h3>Student Information</h3>
+        <table class="detail-table">
+            <tr>
+                <th>Registration No.</th>
+                <td th:text="${student.regNo}"></td>
+            </tr>
+            <tr>
+                <th>Full Name</th>
+                <td th:text="${student.name}"></td>
+            </tr>
+            <tr>
+                <th>Date of Birth</th>
+                <td th:text="${student.dob}"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td th:text="${student.email}"></td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td th:text="${student.contact}"></td>
+            </tr>
+        </table>
+        <div class="form-actions" style="margin-top:1.5rem;">
+            <a th:href="@{/student/update}" class="btn btn-secondary">✏️ Update This Student</a>
+            <a th:href="@{/student}" class="btn btn-primary">← Student Menu</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

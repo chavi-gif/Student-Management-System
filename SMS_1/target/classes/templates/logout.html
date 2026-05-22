@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Exit | Marks Management System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+<div class="container">
+    <div class="hero-card">
+        <div class="hero-icon">🚪</div>
+        <h1>You have exited the system.</h1>
+        <p class="subtitle">Thank you for using the Marks Management System.</p>
+        <a th:href="@{/}" class="btn btn-primary" style="margin-top:2rem;">🏠 Return to Home</a>
+    </div>
+</div>
+</body>
+</html>

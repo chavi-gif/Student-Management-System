@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Operations | SMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container">
+    <div class="page-header">
+        <h2>👤 Student Operations</h2>
+    </div>
+
+    <div class="menu-grid">
+        <a th:href="@{/student/add}" class="menu-card">
+            <div class="menu-card-icon">➕</div>
+            <div class="menu-card-title">1. Add a Student</div>
+            <div class="menu-card-desc">Register a new student</div>
+        </a>
+        <a th:href="@{/student/view}" class="menu-card">
+            <div class="menu-card-icon">🔍</div>
+            <div class="menu-card-title">2. View a Student</div>
+            <div class="menu-card-desc">View student details by RegNo</div>
+        </a>
+        <a th:href="@{/student/update}" class="menu-card">
+            <div class="menu-card-icon">✏️</div>
+            <div class="menu-card-title">3. Update a Student</div>
+            <div class="menu-card-desc">Update student information</div>
+        </a>
+        <a th:href="@{/student/delete}" class="menu-card menu-card-danger">
+            <div class="menu-card-icon">🗑️</div>
+            <div class="menu-card-title">4. Delete a Student</div>
+            <div class="menu-card-desc">Remove student record</div>
+        </a>
+        <a th:href="@{/}" class="menu-card">
+            <div class="menu-card-icon">🏠</div>
+            <div class="menu-card-title">5. Home</div>
+            <div class="menu-card-desc">Return to main menu</div>
+        </a>
+        <a th:href="@{/logout}" class="menu-card menu-card-exit">
+            <div class="menu-card-icon">🚪</div>
+            <div class="menu-card-title">0. Exit / Logout</div>
+            <div class="menu-card-desc">Close the application</div>
+        </a>
+    </div>
+</div>
+</body>
+</html>

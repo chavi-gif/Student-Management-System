@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Name | SMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container">
+    <div class="page-header">
+        <h2>📝 Update Name</h2>
+        <a th:href="@{/student/update}" class="btn btn-secondary">← Back</a>
+    </div>
+
+    <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+
+    <div class="form-card">
+        <p><strong>RegNo:</strong> <span th:text="${regNo}"></span></p>
+        <p><strong>Current Name:</strong> <span th:text="${currentName}"></span></p>
+
+        <form th:action="@{/student/update/name}" method="post">
+            <input type="hidden" name="regNo" th:value="${regNo}">
+            <div class="form-group">
+                <label for="name">New Name *</label>
+                <input type="text" id="name" name="name"
+                       class="form-control" placeholder="Enter new name" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">💾 Update Name</button>
+                <a th:href="@{/student}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

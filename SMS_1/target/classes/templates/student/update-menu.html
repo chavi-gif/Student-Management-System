@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Options | SMS</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+<div class="container">
+    <div class="page-header">
+        <h2>✏️ Student Update — <span th:text="${student.regNo}"></span></h2>
+        <p class="subtitle" th:text="'Name: ' + ${student.name}"></p>
+    </div>
+
+    <div class="menu-grid">
+        <a th:href="@{/student/update/name(regNo=${regNo})}" class="menu-card">
+            <div class="menu-card-icon">📝</div>
+            <div class="menu-card-title">1. Update Name</div>
+            <div class="menu-card-desc" th:text="'Current: ' + ${student.name}"></div>
+        </a>
+        <a th:href="@{/student/update/dob(regNo=${regNo})}" class="menu-card">
+            <div class="menu-card-icon">📅</div>
+            <div class="menu-card-title">2. Update Date of Birth</div>
+            <div class="menu-card-desc" th:text="'Current: ' + ${student.dob}"></div>
+        </a>
+        <a th:href="@{/student/update/contact(regNo=${regNo})}" class="menu-card">
+            <div class="menu-card-icon">📞</div>
+            <div class="menu-card-title">3. Update Contact No.</div>
+            <div class="menu-card-desc" th:text="'Current: ' + ${student.contact}"></div>
+        </a>
+        <a th:href="@{/student}" class="menu-card">
+            <div class="menu-card-icon">👤</div>
+            <div class="menu-card-title">4. Student Operations</div>
+            <div class="menu-card-desc">Back to student menu</div>
+        </a>
+        <a th:href="@{/}" class="menu-card">
+            <div class="menu-card-icon">🏠</div>
+            <div class="menu-card-title">5. Home</div>
+            <div class="menu-card-desc">Return to home</div>
+        </a>
+        <a th:href="@{/logout}" class="menu-card menu-card-exit">
+            <div class="menu-card-icon">🚪</div>
+            <div class="menu-card-title">0. Exit / Logout</div>
+            <div class="menu-card-desc">Close the application</div>
+        </a>
+    </div>
+</div>
+</body>
+</html>
